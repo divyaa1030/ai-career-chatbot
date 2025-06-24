@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f7;
+    text-align: center;
+    padding: 50px;
+}
+
+h1, h2 {
+    color: #2c3e50;
+}
+
+.start-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#chatbox {
+    width: 60%;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    min-height: 300px;
+    border: 1px solid #ccc;
+}
+
+input[type="text"] {
+    width: 60%;
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+}
