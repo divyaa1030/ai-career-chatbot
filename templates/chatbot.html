@@ -2,33 +2,112 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Career Chat</title>
+    <title>Chat with Boss</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f1f1f1;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            padding: 20px;
+            background: #00bcd4;
+            color: white;
+        }
+
+        .chat-box {
+            flex: 1;
+            overflow-y: scroll;
+            padding: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+            max-width: 60%;
+            padding: 10px;
+            border-radius: 10px;
+            clear: both;
+        }
+
+        .user {
+            background: #d1f7c4;
+            float: left;
+        }
+
+        .bot {
+            background: #b0e0e6;
+            float: right;
+        }
+
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .chat-input button {
+            margin-left: 10px;
+            padding: 10px 15px;
+            background: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .voice-btn {
+            margin-left: 10px;
+            background: orange;
+        }
+    </style>
 </head>
 <body>
-    <h2>Chat with boss, your Career Guide!</h2>
-    <div id="chatbox"></div>
-
-    <input type="text" id="userInput" placeholder="Type your question..." />
-    <button onclick="sendMessage()">Send</button>
+    <div class="chat-header">Chat with Boss, your career guide</div>
+    <div class="chat-box" id="chat-box">
+        <!-- Messages appear here -->
+    </div>
+    <div class="chat-input">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+        <button class="voice-btn">🎤</button>
+    </div>
 
     <script>
-        async function sendMessage() {
-            let userText = document.getElementById("userInput").value;
-            let chatbox = document.getElementById("chatbox");
+        function sendMessage() {
+            const userInput = document.getElementById("user-input");
+            const message = userInput.value.trim();
+            if (!message) return;
 
-            chatbox.innerHTML += "<p><strong>You:</strong> " + userText + "</p>";
+            const chatBox = document.getElementById("chat-box");
 
-            const response = await fetch("/get_response", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ message: userText })
-            });
+            const userMessage = document.createElement("div");
+            userMessage.className = "message user";
+            userMessage.innerText = message;
 
-            const data = await response.json();
-            chatbox.innerHTML += "<p><strong>Bot:</strong> " + data.reply + "</p>";
+            const botMessage = document.createElement("div");
+            botMessage.className = "message bot";
+            botMessage.innerText = "Thinking... (connect with backend here)";
 
-            document.getElementById("userInput").value = "";
+            chatBox.appendChild(userMessage);
+            chatBox.appendChild(botMessage);
+
+            userInput.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
         }
     </script>
 </body>

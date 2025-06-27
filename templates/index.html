@@ -1,13 +1,33 @@
+<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Career Counselor Chatbot</title>
+    <title>AI Career Counselor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-<body class="centered">
-    <h1>AI Career Counselor Chatbot</h1>
-    <p>Get career guidance based on your interests!</p>
-    <a href="/chat"><button class="start-btn">Start Chat</button></a>
+<body>
+    <div class="sidebar" id="sidebar">
+        <ul>
+            <li>History</li>
+            <li>Monthly Schedule</li>
+            <li>Daily Update</li>
+            <li>Reminder System</li>
+        </ul>
+    </div>
+
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <div class="main-content">
+        <h1>AI Career Counselor</h1>
+        <p>Get career guidance based on your interests.</p>
+        <a href="/chat" class="start-btn">Start Chat</a>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+    </script>
 </body>
 </html>
