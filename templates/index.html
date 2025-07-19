@@ -1,60 +1,123 @@
-<!-- templates/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>AI Career Counselor Chatbot</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <meta charset="UTF-8">
+  <title>AI Career Counselor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: url('https://images.unsplash.com/photo-1584697964403-c74c45c9c01b?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+  }
+
+  .sidebar {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px 20px;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
+
+  .sidebar h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #00bcd4;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+
+  .sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar ul li {
+    margin: 18px 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    background-color: #f0f0f0;
+    padding: 12px 15px;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .sidebar ul li:hover {
+    background-color: #00bcd4;
+    color: white;
+    transform: translateX(5px);
+    box-shadow: 2px 2px 6px rgba(0, 188, 212, 0.3);
+  }
+
+  .main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    background-color: rgba(255, 255, 255, 0.85);
+  }
+
+  .main h1 {
+    font-size: 48px;
+    color: black;
+    margin-bottom: 10px;
+  }
+
+  .main p {
+    font-size: 20px;
+    color: #444;
+    margin-bottom: 30px;
+  }
+
+  .main a {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #00bcd4;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  .main a:hover {
+    background-color: #0192a5;
+  }
+</style>  
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <button class="close-btn" onclick="toggleSidebar()">✖</button>
-        <ul>
-            <li onclick="showPopup('history')">History</li>
-            <li onclick="showPopup('schedule')">Monthly Schedule</li>
-            <li onclick="showPopup('update')">Daily Update</li>
-            <li onclick="showPopup('reminder')">Reminder System</li>
-        </ul>
-    </div>
 
-    <!-- Hamburger -->
-    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Features</h2>
+    <ul>
+      <li>📜 History</li>
+      <li>📅 Monthly Schedule</li>
+      <li>📝 Daily Update</li>
+      <li>⏰ Reminder System</li>
+    </ul>
+  </div>
 
-    <!-- Main Page Content -->
-    <div class="main-content">
-        <h1>AI Career Counselor Chatbot</h1>
-        <a href="/chat" class="start-btn">Start Chat</a>
-    </div>
+  <!-- Main content -->
+  <div class="main">
+    <h1>AI Career Chatbot</h1>
+    <p>Your personalized career counselor for 12th-grade students</p>
+    <a href="/chat">Start Chat</a>
+  </div>
 
-    <!-- Popups -->
-    <div id="popup-container" class="popup-container">
-        <div id="popup" class="popup">
-            <span id="popup-close" onclick="closePopup()">✖</span>
-            <div id="popup-content"></div>
-        </div>
-    </div>
-
-    <script>
-        function toggleSidebar() {
-            document.getElementById("sidebar").classList.toggle("open");
-        }
-
-        function showPopup(type) {
-            const content = {
-                history: "🕓 Your past chat history will appear here.",
-                schedule: "📅 Monthly schedule with 2 hrs/day plan shown here.",
-                update: "📝 Update daily progress: time & topic.",
-                reminder: "⏰ Bot reminds you if a day is missed."
-            };
-
-            document.getElementById("popup-content").innerText = content[type] || "";
-            document.getElementById("popup-container").style.display = "flex";
-        }
-
-        function closePopup() {
-            document.getElementById("popup-container").style.display = "none";
-        }
-    </script>
 </body>
 </html>
