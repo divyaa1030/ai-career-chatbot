@@ -1,0 +1,60 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Career Counselor Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <button class="close-btn" onclick="toggleSidebar()">✖</button>
+        <ul>
+            <li onclick="showPopup('history')">History</li>
+            <li onclick="showPopup('schedule')">Monthly Schedule</li>
+            <li onclick="showPopup('update')">Daily Update</li>
+            <li onclick="showPopup('reminder')">Reminder System</li>
+        </ul>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+    <!-- Main Page Content -->
+    <div class="main-content">
+        <h1>AI Career Counselor Chatbot</h1>
+        <a href="/chat" class="start-btn">Start Chat</a>
+    </div>
+
+    <!-- Popups -->
+    <div id="popup-container" class="popup-container">
+        <div id="popup" class="popup">
+            <span id="popup-close" onclick="closePopup()">✖</span>
+            <div id="popup-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle("open");
+        }
+
+        function showPopup(type) {
+            const content = {
+                history: "🕓 Your past chat history will appear here.",
+                schedule: "📅 Monthly schedule with 2 hrs/day plan shown here.",
+                update: "📝 Update daily progress: time & topic.",
+                reminder: "⏰ Bot reminds you if a day is missed."
+            };
+
+            document.getElementById("popup-content").innerText = content[type] || "";
+            document.getElementById("popup-container").style.display = "flex";
+        }
+
+        function closePopup() {
+            document.getElementById("popup-container").style.display = "none";
+        }
+    </script>
+</body>
+</html>
