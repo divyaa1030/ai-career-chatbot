@@ -17,4 +17,3 @@ A web-based chatbot that helps 12th-grade students explore suitable career paths
 - Deployable to Render or Heroku
 
 ## 📁 Folder Structure
-
