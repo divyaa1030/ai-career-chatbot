@@ -1,11 +1,12 @@
-def get_bot_response(message):
+def get_chat_response(message, stream):
     message = message.lower()
 
-    if "software" in message:
-        return "You can become a Software Engineer. Start with B.Tech or BCA, then learn DSA, Git, and do projects."
-    elif "bio" in message:
-        return "You can choose fields like MBBS, BDS, B.Pharm, or Biomedical Engineering."
-    elif "arts" in message:
-        return "Options include BA in Literature, Sociology, Journalism, or even UPSC preparation."
+    # Basic hardcoded logic based on stream
+    if stream == 'cs':
+        return "Based on your CS stream, you might explore careers like Software Developer, Data Scientist, or AI/ML Engineer."
+    elif stream == 'bio':
+        return "Since you're in the Biology stream, consider becoming a Doctor, Biotechnologist, Pharmacist, or Research Scientist."
+    elif stream == 'arts':
+        return "For Arts, fields like Psychology, Journalism, Law, or Design could be great for you."
     else:
-        return "Please specify your interest (e.g., software, bio, arts), and I'll guide you."
+        return "Tell me more about your interests so I can guide you better!"

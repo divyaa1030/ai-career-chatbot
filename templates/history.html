@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat History</title>
+</head>
+<body>
+    <h2 style="text-align:center;">Your Chat History</h2>
+    <div id="history" style="max-width:600px; margin:auto;"></div>
+
+    <script>
+        fetch('/history')
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('history');
+            data.forEach(([q, a]) => {
+                container.innerHTML += `<p><b>You:</b> ${q}<br><b>Boss:</b> ${a}</p><hr>`;
+            });
+        });
+    </script>
+</body>
+</html>
