@@ -1,7 +1,6 @@
-def get_chat_response(message, stream):
+def get_career_suggestion(message, stream):  # ✅ Correct
     message = message.lower()
 
-    # Basic hardcoded logic based on stream
     if stream == 'cs':
         return "Based on your CS stream, you might explore careers like Software Developer, Data Scientist, or AI/ML Engineer."
     elif stream == 'bio':
